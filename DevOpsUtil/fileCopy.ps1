@@ -5,6 +5,7 @@
 #AUTHOR         :   prakashvel.periyannan@gmail.com
 #LICENSE        :   MIT License
 #REFERENCES     :   https://gallery.technet.microsoft.com/scriptcenter/ea40c1ef-c856-434b-b8fb-ebd7a76e8d91
+#               :   https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/copy-item?view=powershell-7.1
 
 #DECLARATION
 $FOLDER_TO_BE_COPIED_COLLECTION    = @()
@@ -137,9 +138,13 @@ Write-Host "DEBUG: FILES_TO_BE_COPIED  :" ,$FILE_TO_BE_COPIED.count
 # Iterate with all the Values under the Section Folder to be copied.
 foreach ($Folder in $FOLDER_TO_BE_COPIED_COLLECTION) {
         $INIFile["FOLDER_TO_COPY"][$Folder]
+        #Example 2: Copy directory contents to an existing directory
+        #Copy-Item -Path "C:\Logfiles\*" -Destination "C:\Drawings" -Recurse
 }
 
 # Iterate with all the Values under the Section Files to be copied.
 foreach ($File in $FILE_TO_BE_COPIED_COLLECTION) {
         $INIFile["FILE_TO_COPY"][$File]
+        #Example 1: Copy a file to the specified directory
+        #Copy-Item "C:\Wabash\Logfiles\mar1604.log.txt" -Destination "C:\Presentation"
 }
